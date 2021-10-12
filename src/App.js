@@ -18,7 +18,6 @@ const App = () => {
     typeOfReturn: "",
     buyDate: "",
     howFinish: "",
-    getDate: "",
     isProtocol: "",
     requiresDisassembly: "",
     description: "",
@@ -64,7 +63,6 @@ const App = () => {
     typeOfReturn: "",
     buyDate: "",
     howFinish: "",
-    getDate: "",
     isProtocol: "",
     requiresDisassembly: "",
     description: "",
@@ -97,7 +95,6 @@ const App = () => {
       typeOfReturn: false,
       buyDate: false,
       howFinish: false,
-      getDate: false,
       isProtocol: false,
       requiresDisassembly: false,
       description: false,
@@ -125,9 +122,10 @@ const App = () => {
       state.typeOfReturn === "Gwarancja producenta" ||
       state.typeOfReturn === "Rękojmia"
     ) {
-      if (state.buyDate === "") validate.buyDate = true;
       if (state.requiresDisassembly === "") validate.requiresDisassembly = true;
     }
+
+    if (state.buyDate === "") validate.buyDate = true;
 
     if (state.typeOfReturn === "Rękojmia") {
       if (state.howFinish === "") validate.howFinish = true;
@@ -137,7 +135,6 @@ const App = () => {
       state.typeOfReturn ===
       "Dostałem towar uszkodzony (zgł. max. do 7 dni od otrzymania towaru)"
     ) {
-      if (state.getDate === "") validate.getDate = true;
       if (state.isProtocol === "") validate.isProtocol = true;
     }
 
@@ -171,6 +168,7 @@ const App = () => {
     if (
       !validate.docNumber &&
       !validate.producer &&
+      !validate.buyDate &&
       !validate.typeProduct &&
       !validate.quantity &&
       !validate.typeOfReturn &&
@@ -203,7 +201,7 @@ const App = () => {
         state.typeOfReturn ===
         "Dostałem towar uszkodzony (zgł. max. do 7 dni od otrzymania towaru)"
       ) {
-        if (!validate.getDate && !validate.isProtocol) {
+        if (!validate.isProtocol) {
           sendForm(state);
         }
       }
@@ -286,8 +284,7 @@ const App = () => {
       ${
         obj.typeOfReturn ===
         "Dostałem towar uszkodzony (zgł. max. do 7 dni od otrzymania towaru)"
-          ? `<b>Data otrzymania towaru:</b> ${obj.getDate} <br/>
-            <b>Czy został sporządzony protokół szkody przez kuriera?:</b> ${obj.isProtocol} <br/>`
+          ? `<b>Czy został sporządzony protokół szkody przez kuriera?:</b> ${obj.isProtocol} <br/>`
           : ""
       }
 
@@ -398,8 +395,6 @@ const App = () => {
             validation={badValidate.typeOfReturn}
             errorMsg={"Podaj rodzaj zgłoszenia"}
           />
-          {state.typeOfReturn === "Gwarancja producenta" ||
-          state.typeOfReturn === "Rękojmia" ? (
             <Input
               value={state.buyDate}
               name={"buyDate"}
@@ -410,7 +405,6 @@ const App = () => {
               maxDate={todayDate}
               errorMsg={"Podaj datę zakupu"}
             />
-          ) : null}
           {state.typeOfReturn === "Rękojmia" ? (
             <Select
               value={state.howFinish}
@@ -425,27 +419,15 @@ const App = () => {
 
           {state.typeOfReturn ===
           "Dostałem towar uszkodzony (zgł. max. do 7 dni od otrzymania towaru)" ? (
-            <div>
-              <Input
-                value={state.getDate}
-                name={"getDate"}
-                labelName="Data otrzymania towaru"
-                handleInput={handleInput}
-                type={"date"}
-                validation={badValidate.getDate}
-                maxDate={todayDate}
-                errorMsg={"Podaj datę otrzymania towaru"}
-              />
-              <Select
-                value={state.isProtocol}
-                name={"isProtocol"}
-                labelName="Czy został sporządzony protokół szkody przez kuriera?"
-                optionsValue={isTrue}
-                handleInput={handleInput}
-                validation={badValidate.isProtocol}
-                errorMsg={"Czy jest sporządzony protokół"}
-              />
-            </div>
+            <Select
+              value={state.isProtocol}
+              name={"isProtocol"}
+              labelName="Czy został sporządzony protokół szkody przez kuriera?"
+              optionsValue={isTrue}
+              handleInput={handleInput}
+              validation={badValidate.isProtocol}
+              errorMsg={"Czy jest sporządzony protokół"}
+            />
           ) : null}
           {state.typeOfReturn === "Gwarancja producenta" ||
           state.typeOfReturn === "Rękojmia" ? (
