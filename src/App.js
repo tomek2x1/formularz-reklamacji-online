@@ -443,15 +443,6 @@ const App = () => {
             errorMsg={"Podaj rodzaj zgłoszenia"}
             buyDate={state.buyDate}
           />
-          {/* <Select
-            value={state.typeOfReturn}
-            name={"typeOfReturn"}
-            labelName="Rodzaj zgłoszenia"
-            optionsValue={applicationType}
-            handleInput={handleInput}
-            validation={badValidate.typeOfReturn}
-            errorMsg={"Podaj rodzaj zgłoszenia"}
-          /> */}
           {state.typeOfReturn === "Rękojmia" ? (
             <Select
               value={state.howFinish}
@@ -498,7 +489,11 @@ const App = () => {
             value={state.files}
             name={"files"}
             length={state.files.length}
-            labelName="Dodaj zdjęcia wady"
+            labelName={
+              state.isProtocol === "Tak"
+                ? "Dodaj zdjęcia wady i skan protokołu szkody"
+                : "Dodaj zdjęcia wady"
+            }
             handleInput={handleInput}
             validation={badValidate.files}
           />
