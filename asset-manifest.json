@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/formularz-reklamacji-online/static/css/main.38b69cc6.chunk.css",
+    "main.css": "/formularz-reklamacji-online/static/css/main.d0bd0113.chunk.css",
     "main.js": "/formularz-reklamacji-online/static/js/main.901ebbeb.chunk.js",
     "main.js.map": "/formularz-reklamacji-online/static/js/main.901ebbeb.chunk.js.map",
     "runtime-main.js": "/formularz-reklamacji-online/static/js/runtime-main.5b206562.js",
@@ -10,13 +10,13 @@
     "static/js/3.7a13b9fb.chunk.js": "/formularz-reklamacji-online/static/js/3.7a13b9fb.chunk.js",
     "static/js/3.7a13b9fb.chunk.js.map": "/formularz-reklamacji-online/static/js/3.7a13b9fb.chunk.js.map",
     "index.html": "/formularz-reklamacji-online/index.html",
-    "static/css/main.38b69cc6.chunk.css.map": "/formularz-reklamacji-online/static/css/main.38b69cc6.chunk.css.map",
+    "static/css/main.d0bd0113.chunk.css.map": "/formularz-reklamacji-online/static/css/main.d0bd0113.chunk.css.map",
     "static/js/2.7b8e3a44.chunk.js.LICENSE.txt": "/formularz-reklamacji-online/static/js/2.7b8e3a44.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.5b206562.js",
     "static/js/2.7b8e3a44.chunk.js",
-    "static/css/main.38b69cc6.chunk.css",
+    "static/css/main.d0bd0113.chunk.css",
     "static/js/main.901ebbeb.chunk.js"
   ]
 }
