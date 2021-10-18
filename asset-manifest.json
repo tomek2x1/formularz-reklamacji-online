@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/formularz-reklamacji-online/static/css/main.38b69cc6.chunk.css",
-    "main.js": "/formularz-reklamacji-online/static/js/main.d6badb86.chunk.js",
-    "main.js.map": "/formularz-reklamacji-online/static/js/main.d6badb86.chunk.js.map",
+    "main.js": "/formularz-reklamacji-online/static/js/main.901ebbeb.chunk.js",
+    "main.js.map": "/formularz-reklamacji-online/static/js/main.901ebbeb.chunk.js.map",
     "runtime-main.js": "/formularz-reklamacji-online/static/js/runtime-main.5b206562.js",
     "runtime-main.js.map": "/formularz-reklamacji-online/static/js/runtime-main.5b206562.js.map",
     "static/js/2.7b8e3a44.chunk.js": "/formularz-reklamacji-online/static/js/2.7b8e3a44.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.5b206562.js",
     "static/js/2.7b8e3a44.chunk.js",
     "static/css/main.38b69cc6.chunk.css",
-    "static/js/main.d6badb86.chunk.js"
+    "static/js/main.901ebbeb.chunk.js"
   ]
 }
