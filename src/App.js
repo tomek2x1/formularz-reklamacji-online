@@ -5,6 +5,7 @@ import "./App.css";
 import Input from "./Components/Input";
 import InputRadio from "./Components/InputRadio";
 import Select from "./Components/Select";
+import SelectTypeOfReturn from "./Components/SelectTypeOfReturn";
 import TextArea from "./Components/TextArea";
 import InputFile from "./Components/InputFile";
 import Agreement from "./Components/Agreement";
@@ -144,10 +145,7 @@ const App = () => {
       if (state.howFinish === "") validate.howFinish = true;
     }
 
-    if (
-      state.typeOfReturn ===
-      "Dostałem towar uszkodzony (zgł. max. do 7 dni od otrzymania towaru)"
-    ) {
+    if (state.typeOfReturn === "Dostałem towar uszkodzony") {
       if (state.isProtocol === "") validate.isProtocol = true;
     }
 
@@ -232,22 +230,13 @@ const App = () => {
             }
           }
         }
-      } else if (
-        state.typeOfReturn ===
-        "Dostałem towar uszkodzony (zgł. max. do 7 dni od otrzymania towaru)"
-      ) {
+      } else if (state.typeOfReturn === "Dostałem towar uszkodzony") {
         if (!validate.isProtocol) {
           sendForm(state);
         }
       }
     }
   };
-
-  const applicationType = [
-    "Gwarancja producenta",
-    "Rękojmia",
-    "Dostałem towar uszkodzony (zgł. max. do 7 dni od otrzymania towaru)",
-  ];
 
   const howFinishApplication = [
     "Naprawa towaru",
@@ -318,8 +307,7 @@ const App = () => {
       }
 
       ${
-        obj.typeOfReturn ===
-        "Dostałem towar uszkodzony (zgł. max. do 7 dni od otrzymania towaru)"
+        obj.typeOfReturn === "Dostałem towar uszkodzony"
           ? `<b>Czy został sporządzony protokół szkody przez kuriera?:</b> ${obj.isProtocol} <br/>`
           : ""
       }
@@ -446,7 +434,16 @@ const App = () => {
             maxDate={todayDate}
             errorMsg={"Podaj datę zakupu"}
           />
-          <Select
+          <SelectTypeOfReturn
+            value={state.typeOfReturn}
+            name={"typeOfReturn"}
+            labelName="Rodzaj zgłoszenia"
+            handleInput={handleInput}
+            validation={badValidate.typeOfReturn}
+            errorMsg={"Podaj rodzaj zgłoszenia"}
+            buyDate={state.buyDate}
+          />
+          {/* <Select
             value={state.typeOfReturn}
             name={"typeOfReturn"}
             labelName="Rodzaj zgłoszenia"
@@ -454,7 +451,7 @@ const App = () => {
             handleInput={handleInput}
             validation={badValidate.typeOfReturn}
             errorMsg={"Podaj rodzaj zgłoszenia"}
-          />
+          /> */}
           {state.typeOfReturn === "Rękojmia" ? (
             <Select
               value={state.howFinish}
@@ -466,8 +463,7 @@ const App = () => {
               errorMsg={"Podaj sposób zakończenia zgłoszenia"}
             />
           ) : null}
-          {state.typeOfReturn ===
-          "Dostałem towar uszkodzony (zgł. max. do 7 dni od otrzymania towaru)" ? (
+          {state.typeOfReturn === "Dostałem towar uszkodzony" ? (
             <Select
               value={state.isProtocol}
               name={"isProtocol"}

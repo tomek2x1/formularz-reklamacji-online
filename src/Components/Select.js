@@ -14,7 +14,7 @@ const Select = ({
       </option>
     );
   });
-  console.log(name, value);
+
   return (
     <label
       htmlFor={name}
