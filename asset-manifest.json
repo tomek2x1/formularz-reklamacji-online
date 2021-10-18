@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/formularz-reklamacji-online/static/css/main.82fbf429.chunk.css",
-    "main.js": "/formularz-reklamacji-online/static/js/main.c9de1b42.chunk.js",
-    "main.js.map": "/formularz-reklamacji-online/static/js/main.c9de1b42.chunk.js.map",
-    "runtime-main.js": "/formularz-reklamacji-online/static/js/runtime-main.8d25b888.js",
-    "runtime-main.js.map": "/formularz-reklamacji-online/static/js/runtime-main.8d25b888.js.map",
-    "static/js/2.ecc8934c.chunk.js": "/formularz-reklamacji-online/static/js/2.ecc8934c.chunk.js",
-    "static/js/2.ecc8934c.chunk.js.map": "/formularz-reklamacji-online/static/js/2.ecc8934c.chunk.js.map",
-    "static/js/3.5401730b.chunk.js": "/formularz-reklamacji-online/static/js/3.5401730b.chunk.js",
-    "static/js/3.5401730b.chunk.js.map": "/formularz-reklamacji-online/static/js/3.5401730b.chunk.js.map",
+    "main.css": "/formularz-reklamacji-online/static/css/main.38b69cc6.chunk.css",
+    "main.js": "/formularz-reklamacji-online/static/js/main.4ce9018c.chunk.js",
+    "main.js.map": "/formularz-reklamacji-online/static/js/main.4ce9018c.chunk.js.map",
+    "runtime-main.js": "/formularz-reklamacji-online/static/js/runtime-main.5b206562.js",
+    "runtime-main.js.map": "/formularz-reklamacji-online/static/js/runtime-main.5b206562.js.map",
+    "static/js/2.6710c86d.chunk.js": "/formularz-reklamacji-online/static/js/2.6710c86d.chunk.js",
+    "static/js/2.6710c86d.chunk.js.map": "/formularz-reklamacji-online/static/js/2.6710c86d.chunk.js.map",
+    "static/js/3.7a13b9fb.chunk.js": "/formularz-reklamacji-online/static/js/3.7a13b9fb.chunk.js",
+    "static/js/3.7a13b9fb.chunk.js.map": "/formularz-reklamacji-online/static/js/3.7a13b9fb.chunk.js.map",
     "index.html": "/formularz-reklamacji-online/index.html",
-    "static/css/main.82fbf429.chunk.css.map": "/formularz-reklamacji-online/static/css/main.82fbf429.chunk.css.map",
-    "static/js/2.ecc8934c.chunk.js.LICENSE.txt": "/formularz-reklamacji-online/static/js/2.ecc8934c.chunk.js.LICENSE.txt"
+    "static/css/main.38b69cc6.chunk.css.map": "/formularz-reklamacji-online/static/css/main.38b69cc6.chunk.css.map",
+    "static/js/2.6710c86d.chunk.js.LICENSE.txt": "/formularz-reklamacji-online/static/js/2.6710c86d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8d25b888.js",
-    "static/js/2.ecc8934c.chunk.js",
-    "static/css/main.82fbf429.chunk.css",
-    "static/js/main.c9de1b42.chunk.js"
+    "static/js/runtime-main.5b206562.js",
+    "static/js/2.6710c86d.chunk.js",
+    "static/css/main.38b69cc6.chunk.css",
+    "static/js/main.4ce9018c.chunk.js"
   ]
 }
