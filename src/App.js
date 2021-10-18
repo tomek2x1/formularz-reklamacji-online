@@ -165,8 +165,8 @@ const App = () => {
     if (!regExPhoneNumber.test(state.phone)) validate.phone = true;
 
     if (state.street === "") validate.street = true;
-
-    if (state.zipCode === "") validate.zipCode = true;
+    const regExZipCode =/^\d\d-\d\d\d$/;
+    if (!regExZipCode.test(state.zipCode)) validate.zipCode = true;
 
     if (state.city === "") validate.city = true;
 
@@ -187,7 +187,7 @@ const App = () => {
       state.deviceSamePlace === "Nie"
     ) {
       if (state.street2 === "") validate.street2 = true;
-      if (state.zipCode2 === "") validate.zipCode2 = true;
+      if (!regExZipCode.test(state.zipCode2)) validate.zipCode2 = true;
       if (state.city2 === "") validate.city2 = true;
     }
 
@@ -538,7 +538,7 @@ const App = () => {
             name={"zipCode"}
             labelName="Kod pocztowy"
             handleInput={handleInput}
-            type={"number"}
+            type={"text"}
             validation={badValidate.zipCode}
             errorMsg={"Podaj kod pocztowy"}
           />
@@ -585,7 +585,7 @@ const App = () => {
                 name={"zipCode2"}
                 labelName="Kod pocztowy"
                 handleInput={handleInput}
-                type={"number"}
+                type={"text"}
                 validation={badValidate.zipCode2}
                 errorMsg={"Podaj kod pocztowy"}
               />
