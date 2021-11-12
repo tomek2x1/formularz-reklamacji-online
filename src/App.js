@@ -2,14 +2,13 @@ import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
-import Input from "./Components/Input";
-import InputRadio from "./Components/InputRadio";
-import Select from "./Components/Select";
-import SelectTypeOfReturn from "./Components/SelectTypeOfReturn";
-import TextArea from "./Components/TextArea";
-import InputFile from "./Components/InputFile";
 import Agreement from "./Components/Agreement";
 import FormFooter from "./Components/FormFooter";
+import Buttons from "./Components/Buttons";
+import FirstFormStep from "./Components/FirstFormStep";
+import SecondFormStep from "./Components/SecondFormStep";
+
+import ProgressBar from "./Components/ProgressBar";
 
 const App = () => {
   const [state, setState] = useState({
@@ -40,6 +39,14 @@ const App = () => {
 
   const [todayDate, setTodayDate] = useState(false);
   const [tomorrowDate, setTomorrowDate] = useState(false);
+
+  const [step, setStep] = useState(1);
+
+  const handleProgressBarStep = (id) => {
+    if (id < step) {
+      setStep(id);
+    }
+  };
 
   useEffect(() => {
     getDate();
@@ -122,35 +129,6 @@ const App = () => {
       agreement: false,
     };
 
-    if (state.docNumber === "") validate.docNumber = true;
-
-    if (state.producer === "") validate.producer = true;
-
-    if (state.typeProduct === "") validate.typeProduct = true;
-
-    if (state.quantity === "" || state.quantity < 0) validate.quantity = true;
-
-    if (state.typeOfReturn === "") validate.typeOfReturn = true;
-
-    if (
-      state.typeOfReturn === "Gwarancja producenta" ||
-      state.typeOfReturn === "Rękojmia"
-    ) {
-      if (state.requiresDisassembly === "") validate.requiresDisassembly = true;
-    }
-
-    if (state.buyDate === "") validate.buyDate = true;
-
-    if (state.typeOfReturn === "Rękojmia") {
-      if (state.howFinish === "") validate.howFinish = true;
-    }
-
-    if (state.typeOfReturn === "Dostałem towar uszkodzony") {
-      if (state.isProtocol === "") validate.isProtocol = true;
-    }
-
-    if (state.description === "") validate.description = true;
-
     if (state.name === "") validate.name = true;
 
     if (state.email === "") validate.email = true;
@@ -165,7 +143,7 @@ const App = () => {
     if (!regExPhoneNumber.test(state.phone)) validate.phone = true;
 
     if (state.street === "") validate.street = true;
-    const regExZipCode =/^\d\d-\d\d\d$/;
+    const regExZipCode = /^\d\d-\d\d\d$/;
     if (!regExZipCode.test(state.zipCode)) validate.zipCode = true;
 
     if (state.city === "") validate.city = true;
@@ -237,36 +215,6 @@ const App = () => {
       }
     }
   };
-
-  const howFinishApplication = [
-    "Naprawa towaru",
-    "Wymiana towaru na nowy",
-    "Obniżenie ceny towaru",
-    "Odstąpienie od umowy (istotna wada towaru)",
-  ];
-  const isTrue = ["Tak", "Nie"];
-
-  const deviceSamePlace = ["Tak", "Nie"];
-
-  const producer = [
-    "Blaupunkt",
-    "Climative",
-    "Danfoss",
-    "Devi",
-    "Digitime",
-    "Dimplex",
-    "Ebeco",
-    "Eberle",
-    "Emko",
-    "Esco",
-    "Nexans",
-    "Rotenso",
-    "Sonniger",
-    "Thermoval",
-    "Vaco",
-    "Warmtec",
-    "Inny",
-  ];
 
   const handleInput = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
@@ -386,248 +334,52 @@ const App = () => {
     <div className="return">
       {showForm ? (
         <div id="return-form" className="return-form">
-          <h2 className="return-form__title">Formularz reklamacji (online)</h2>
-          <Input
-            value={state.docNumber}
-            name={"docNumber"}
-            labelName="Numer zamówienia lub numer faktury"
-            handleInput={handleInput}
-            type={"text"}
-            validation={badValidate.docNumber}
-            errorMsg={"Podaj numer zamówienia lub numer faktury"}
+          <h2 className="return-form__title">Formularz reklamacji</h2>
+          <ProgressBar
+            step={step}
+            handleProgressBarStep={handleProgressBarStep}
           />
-          <Select
-            value={state.producer}
-            optionsValue={producer}
-            name={"producer"}
-            labelName="Producent"
-            handleInput={handleInput}
-            validation={badValidate.producer}
-            errorMsg={"Podaj nazwę producenta"}
-          />
-          <Input
-            value={state.typeProduct}
-            name={"typeProduct"}
-            labelName="Nazwa i model towaru"
-            handleInput={handleInput}
-            type={"text"}
-            validation={badValidate.typeProduct}
-            errorMsg={"Podaj nazwę i model towaru"}
-          />
-          <Input
-            value={state.quantity}
-            name={"quantity"}
-            labelName="Ilość sztuk"
-            handleInput={handleInput}
-            type={"number"}
-            minValue={1}
-            validation={badValidate.quantity}
-            errorMsg={"Podaj ilość"}
-          />
-          <Input
-            value={state.buyDate}
-            name={"buyDate"}
-            labelName="Data zakupu"
-            handleInput={handleInput}
-            type={"date"}
-            validation={badValidate.buyDate}
-            maxDate={todayDate}
-            errorMsg={"Podaj datę zakupu"}
-          />
-          <SelectTypeOfReturn
-            value={state.typeOfReturn}
-            name={"typeOfReturn"}
-            labelName="Rodzaj zgłoszenia"
-            handleInput={handleInput}
-            validation={badValidate.typeOfReturn}
-            errorMsg={"Podaj rodzaj zgłoszenia"}
-            buyDate={state.buyDate}
-          />
-          {state.typeOfReturn === "Rękojmia" ? (
-            <Select
-              value={state.howFinish}
-              name={"howFinish"}
-              labelName="Oczekiwany sposób zakończenia zgłoszenia"
-              optionsValue={howFinishApplication}
+          {step === 1 ? (
+            <FirstFormStep
+              state={state}
+              badValidate={badValidate}
               handleInput={handleInput}
-              validation={badValidate.howFinish}
-              errorMsg={"Podaj sposób zakończenia zgłoszenia"}
+              todayDate={todayDate}
+              step={step}
+              setStep={setStep}
+              validateForm={validateForm}
+              setBadValidate={setBadValidate}
             />
           ) : null}
-          {state.typeOfReturn === "Dostałem towar uszkodzony" ? (
-            <Select
-              value={state.isProtocol}
-              name={"isProtocol"}
-              labelName="Czy został sporządzony protokół szkody przez kuriera?"
-              optionsValue={isTrue}
+
+          {step === 2 ? (
+            <SecondFormStep
+              state={state}
+              badValidate={badValidate}
               handleInput={handleInput}
-              validation={badValidate.isProtocol}
-              errorMsg={"Czy jest sporządzony protokół"}
+              step={step}
+              setStep={setStep}
+              validateForm={validateForm}
+              tomorrowDate={tomorrowDate}
+              setBadValidate={setBadValidate}
             />
           ) : null}
-          {state.typeOfReturn === "Gwarancja producenta" ||
-          state.typeOfReturn === "Rękojmia" ? (
-            <Select
-              value={state.requiresDisassembly}
-              name={"requiresDisassembly"}
-              labelName="Czy produkt wymaga demontażu"
-              optionsValue={isTrue}
-              handleInput={handleInput}
-              validation={badValidate.requiresDisassembly}
-              errorMsg={"Czy produkt wymaga demontażu"}
-            />
-          ) : null}
-          <TextArea
-            value={state.description}
-            name={"description"}
-            labelName="Opis wady"
-            handleInput={handleInput}
-            validation={badValidate.description}
-            errorMsg={"Podaj opis wady"}
-          />
-          <InputFile
-            value={state.files}
-            name={"files"}
-            length={state.files.length}
-            labelName={
-              state.isProtocol === "Tak"
-                ? "Dodaj zdjęcia wady i skan protokołu szkody"
-                : "Dodaj zdjęcia wady"
-            }
-            handleInput={handleInput}
-            validation={badValidate.files}
-          />
-          <Input
-            value={state.name}
-            name={"name"}
-            labelName="Imię i nazwisko lub nazwa firmy"
-            handleInput={handleInput}
-            type={"text"}
-            validation={badValidate.name}
-            errorMsg={"Podaj imię i nazwisko lub nazwa firmy"}
-          />
-          <Input
-            value={state.email}
-            name={"email"}
-            labelName="Adres e-mail"
-            handleInput={handleInput}
-            type={"text"}
-            validation={badValidate.email}
-            errorMsg={"Podaj adres e-mail"}
-          />
-          <Input
-            value={state.phone}
-            name={"phone"}
-            labelName="Telefon"
-            handleInput={handleInput}
-            type={"number"}
-            validation={badValidate.phone}
-            errorMsg={"Podaj telefon kontaktowy"}
-          />
-          <Input
-            value={state.street}
-            name={"street"}
-            labelName="Ulica i numer domu"
-            handleInput={handleInput}
-            type={"text"}
-            validation={badValidate.street}
-            errorMsg={"Podaj ulicę i numer domu"}
-          />
-          <Input
-            value={state.zipCode}
-            name={"zipCode"}
-            labelName="Kod pocztowy"
-            handleInput={handleInput}
-            type={"text"}
-            validation={badValidate.zipCode}
-            errorMsg={"Podaj kod pocztowy"}
-          />
-          <Input
-            value={state.city}
-            name={"city"}
-            labelName="Miejscowość"
-            handleInput={handleInput}
-            type={"text"}
-            validation={badValidate.city}
-            errorMsg={"Podaj miejscowość"}
-          />
-          {(state.typeOfReturn === "Gwarancja producenta" ||
-            state.typeOfReturn === "Rękojmia") &&
-          state.requiresDisassembly === "Tak" ? (
-            <InputRadio
-              value={state.deviceSamePlace}
-              name={"deviceSamePlace"}
-              labelName={`Adres urządzenia taki sam jak powyżej?`}
-              handleInput={handleInput}
-              validation={badValidate.deviceSamePlace}
-              options={deviceSamePlace}
-              errorMsg={`Podaj adres urządzenia`}
-            />
-          ) : null}
-          {(state.typeOfReturn === "Gwarancja producenta" ||
-            state.typeOfReturn === "Rękojmia") &&
-          state.requiresDisassembly === "Tak" &&
-          state.deviceSamePlace === "Nie" ? (
+          {step === 3 ? (
             <div>
-              <div className="return-form__subtitle">Dane urządzenia:</div>
-              <Input
-                value={state.street2}
-                name={"street2"}
-                labelName="Ulica i numer domu"
-                handleInput={handleInput}
-                type={"text"}
-                validation={badValidate.street2}
-                errorMsg={"Podaj ulicę i numer domu"}
+              <Agreement
+                value={state.agreement}
+                name={"agreement"}
+                handleCheckbox={handleCheckbox}
+                validation={badValidate.agreement}
               />
-
-              <Input
-                value={state.zipCode2}
-                name={"zipCode2"}
-                labelName="Kod pocztowy"
-                handleInput={handleInput}
-                type={"text"}
-                validation={badValidate.zipCode2}
-                errorMsg={"Podaj kod pocztowy"}
+              <Buttons
+                step={step}
+                setStep={setStep}
+                validateForm={validateForm}
               />
-
-              <Input
-                value={state.city2}
-                name={"city2"}
-                labelName="Miejscowość"
-                handleInput={handleInput}
-                type={"text"}
-                validation={badValidate.city2}
-                errorMsg={"Podaj miejscowość"}
-              />
+              <FormFooter />
             </div>
           ) : null}
-          <Input
-            value={state.getBack}
-            name={"getBack"}
-            labelName="Preferowana data odbioru"
-            handleInput={handleInput}
-            type={"date"}
-            validation={badValidate.getBack}
-            minValue={tomorrowDate}
-            errorMsg={"Podaj preferowaną datę odbioru"}
-          />
-          <Agreement
-            value={state.agreement}
-            name={"agreement"}
-            handleCheckbox={handleCheckbox}
-            validation={badValidate.agreement}
-          />
-          <div className="return-form__btn-wrapper">
-            <button
-              className="return-form__btn"
-              onClick={(e) => {
-                validateForm(e);
-              }}
-            >
-              Wyślij formularz
-            </button>
-          </div>
-          <FormFooter />
         </div>
       ) : null}
       {showSpinner ? (

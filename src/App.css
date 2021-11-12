@@ -13,18 +13,20 @@ body {
 }
 
 .return-form {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
   border-radius: 5px;
-  padding: 20px 30px;
+  padding: 20px 50px;
   border-style: solid;
   border-width: 2px;
-  border-image: linear-gradient(90deg, #ff4e09 0%, #ff7c00 100%) 1;
+  border-color: #c6c6c6;
+  background: #ececec;
 }
 
 .return-form__title {
-  margin: 0px;
-  margin-bottom: 10px;
+  margin: 20px 0 40px;
+  font-size: 30px;
+  text-align: center;
 }
 
 .return-form__subtitle {
@@ -40,11 +42,13 @@ body {
 }
 
 .return-form__name {
-  font-size: 12px;
+  font-size: 16px;
+  margin-bottom: 5px;
+  margin-top: 15px;
 }
 
 .return-form__star {
-  color: #ff4e09;
+  color: red;
 }
 
 .return-form__field {
@@ -55,10 +59,12 @@ body {
   border: 1px solid #b3b3b3;
   padding: 8px 10px;
   outline: none;
+  border-radius: 2px;
+  font-size: 15px;
 }
 
 .return-form__field:focus {
-  border-color: #ff4e09;
+  border-color: #f29400;
 }
 
 .return-form__require .return-form__field {
@@ -105,6 +111,8 @@ input[type="number"] {
   color: #ff4e09;
   margin: 0;
   font-size: 10px;
+  margin-top: 2px;
+  font-size: 11px;
 }
 
 .return-form__product-box {
@@ -170,58 +178,6 @@ input[type="number"] {
   text-align: justify;
 }
 
-.return-form__btn-wrapper {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.return-form__btn {
-  background: #ff4e09;
-  background: linear-gradient(90deg, #ff4e09 0%, #ff7c00 100%);
-  border: 1px solid transparent;
-  color: #ffffff;
-  padding: 8px 10px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 3px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.return-form__btn:hover {
-  background: #ff9300;
-  background: linear-gradient(90deg, #ff9300 0%, #ff9300 100%);
-  border-color: #ff9300;
-}
-
-.return-form__btn--small {
-  padding: 7px 9px;
-  font-size: 12px;
-  border: none;
-}
-
-.return-form__btn--add {
-  background: #4bb94b;
-  margin-right: 10px;
-}
-
-.return-form__btn--add:hover {
-  background: #338333;
-}
-
-.return-form__btn--remove {
-  background: #ff4e4e;
-}
-
-.return-form__btn--remove:hover {
-  background: #ff0000;
-}
-
-.return-form__btn--remove:disabled {
-  background: #efefef;
-}
-
 .return-form__buttons-wrapper {
   border: 1px solid transparent;
 }
@@ -239,6 +195,43 @@ input[type="number"] {
 .return-form__footer-rodo {
   text-decoration: none;
   color: #ff4e09;
+}
+
+.step-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.step-buttons__firstStep {
+  justify-content: flex-end;
+}
+
+.step-buttons__button {
+  background: #f29400;
+  border: 1px solid transparent;
+  color: #ffffff;
+  padding: 8px 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: background 0.2s;
+}
+
+.step-buttons__button--prev {
+  background: #828282;
+}
+
+.step-buttons__button:hover {
+  background: #828282;
+}
+
+.step-buttons__button--hide {
+  display: none;
 }
 
 /* Spinner   */
@@ -437,4 +430,93 @@ input[type="number"] {
 
 .return-message__hide {
   display: none;
+}
+
+/* ProgressBar */
+
+.stepper-wrapper {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.stepper-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.stepper-item:hover {
+  cursor: pointer;
+}
+
+.stepper-item::before {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: -50%;
+  z-index: 2;
+}
+
+.stepper-item::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #ccc;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+}
+
+.stepper-item .step-counter {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ccc;
+  margin-bottom: 6px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.stepper-item.active {
+  font-weight: bold;
+}
+
+.stepper-item.completed .step-counter {
+  background-color: #f29400;
+}
+
+.stepper-item.completed::after {
+  position: absolute;
+  content: "";
+  border-bottom: 2px solid #f29400;
+  width: 100%;
+  top: 20px;
+  left: 50%;
+  z-index: 3;
+}
+
+.stepper-item:first-child::before {
+  content: none;
+}
+.stepper-item:last-child::after {
+  content: none;
+}
+
+.stepper-item .step-name {
+  font-size: 15px;
 }
