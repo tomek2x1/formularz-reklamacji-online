@@ -397,7 +397,7 @@ const App = () => {
         cf_preferowana_data_odbioru722409: obj.getBack,
         cf_data_zakupu483963:obj.buyDate,
         cf_czy_sporzadzono_protokol_szkody: obj.isProtocol === "Tak" ? true : false,
-        cf_czy_produkt_wymaga_demontazu: obj.requiresDisassembly === "Tak" ? true : false,
+        cf_czy_produkt_wymaga_demontazu: obj.requiresDisassembly === "Tak" ? true : false ,
         cf_ulica_montazu_urzadzenia: obj.street2,
         cf_kod_pocztowy_montazu_urzadzenia: obj.zipCode2,
         cf_miejscowosc_montazu_urzadzenia:obj.city2,
