@@ -4,136 +4,120 @@
 
 body {
   background-color: #f7f7f7;
-  font-family: "Poppins", sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: rgb(0, 31, 53);
 }
 
-.return {
+#formularz-reklamacji .return {
   background-color: #fff;
-  font-size: 12px;
+  font-size: 16px;
 }
 
-.return-form {
+#formularz-reklamacji .return-form {
   max-width: 500px;
   margin: 0 auto;
   border-radius: 5px;
   padding: 20px 30px;
-  border-style: solid;
-  border-width: 2px;
-  border-image: linear-gradient(90deg, #ff4e09 0%, #ff7c00 100%) 1;
 }
 
-.return-form__title {
+#formularz-reklamacji .return-form__subtitle {
   margin: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Lexend', sans-serif;
 }
 
-.return-form__subtitle {
-  font-size: 15px;
-  margin-top: 25px;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
 
-.return-form__label {
+#formularz-reklamacji .return-form__label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.return-form__name {
-  font-size: 12px;
+#formularz-reklamacji .return-form__name {
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 
-.return-form__star {
+#formularz-reklamacji .return-form__star {
   color: #ff4e09;
 }
 
-.return-form__field {
+#formularz-reklamacji .return-form__field {
   display: block;
   width: 100%;
   border: none;
-  background: #f8f8f8;
-  border: 1px solid #b3b3b3;
+  border: 1px solid rgba(0, 0, 0, 0.102);
   padding: 8px 10px;
   outline: none;
+  border-radius:5px;
+  font-size: 16px;;
 }
 
-.return-form__field:focus {
+#formularz-reklamacji .return-form__field:focus {
+  border-color: #001f35;
+}
+
+#formularz-reklamacji .return-form__require .return-form__field {
   border-color: #ff4e09;
 }
 
-.return-form__require .return-form__field {
-  border-color: #ff4e09;
-}
-
-.return-form__field.return-form__require {
-  border-color: #ff4e09;
-}
-
-.return-form__extra-field {
+#formularz-reklamacji .return-form__extra-field {
   display: none;
 }
 
-.return-form__extra-field--show {
+#formularz-reklamacji .return-form__extra-field--show {
   display: block;
 }
 
-.return-form__radio-wrapper {
+#formularz-reklamacji .return-form__radio-wrapper {
   border-color: #ff4e09;
 }
 
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-/* Firefox */
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-.return-form__box {
+#formularz-reklamacji .return-form__box {
   display: none;
 }
 
-.return-form__box--show {
+#formularz-reklamacji .return-form__box--show {
   display: block;
 }
 
-.return-form__require-info {
+#formularz-reklamacji .return-form__require-info {
   color: #ff4e09;
   margin: 0;
+  margin-top:2px;
   font-size: 10px;
 }
 
-.return-form__product-box {
-  margin-top: 20px;
-  background: #efefef;
+#formularz-reklamacji .return-form__product-box {
+  margin-top: 10px;
+  background: #eaeced;
   padding: 10px 5px;
+  border-radius:5px;
 }
 
-.return-form__tooltip {
+#formularz-reklamacji .return-form__tooltip {
   position: relative;
   display: block;
 }
 
-.return-form__tooltip .return-form__tooltiptext {
+#formularz-reklamacji .return-form__tooltip .return-form__tooltiptext {
   visibility: hidden;
   max-width: 100%;
   background-color: #f8f8f8;
   text-align: center;
   position: absolute;
   z-index: 1;
-  top: -100%;
+  top: -70%;
   font-size: 12px;
   text-align: left;
   font-weight: 600;
   padding: 10px;
-  border: 1px solid #ff4e09;
+  border: 1px solid #001f35;
+  border-radius: 5px;
 }
 
-.return-form__tooltip .return-form__tooltiptext::after {
+#formularz-reklamacji .return-form__tooltip .return-form__tooltiptext::after {
   content: "";
   position: absolute;
   top: 100%;
@@ -141,109 +125,114 @@ input[type="number"] {
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
-  border-color: #ff4e09 transparent transparent transparent;
+  border-color: #001f35 transparent transparent transparent;
 }
 
-.return-form__tooltip:hover .return-form__tooltiptext {
+#formularz-reklamacji .return-form__tooltip:hover .return-form__tooltiptext {
   visibility: visible;
 }
 
-.return-form__agreement-wrapper {
+#formularz-reklamacji .return-form__agreement-wrapper {
   margin-top: 10px;
 }
 
-.return-form__agreement {
+#formularz-reklamacji .return-form__agreement {
   display: flex;
   font-size: 10px;
   cursor: pointer;
   border: 1px solid transparent;
   padding-right: 10px;
-  margin-bottom: 0px;
 }
 
-.return-form__require.return-form__agreement {
+#formularz-reklamacji .return-form__require.return-form__agreement {
   border-color: #ff4e09;
   margin-bottom: 0px;
 }
 
-.return-form__agreement-text {
+#formularz-reklamacji .return-form__agreement-text {
   text-align: justify;
 }
 
-.return-form__btn-wrapper {
+#formularz-reklamacji .return-form__btn-wrapper {
   display: flex;
   justify-content: flex-end;
 }
 
-.return-form__btn {
-  background: #ff4e09;
-  background: linear-gradient(90deg, #ff4e09 0%, #ff7c00 100%);
-  border: 1px solid transparent;
-  color: #ffffff;
+#formularz-reklamacji .return-form__info-warning {
+  color: #f0a04e;
+  text-align: justify;
+  font-size: 13px;
+}
+
+#formularz-reklamacji .return-form__btn {
+  background: transparent;
+  border: 1px solid #f37043;
+  color: #f37043;
   padding: 8px 10px;
   font-size: 15px;
-  font-weight: bold;
   cursor: pointer;
   border-radius: 3px;
   margin-top: 10px;
   margin-bottom: 10px;
+  transition: .2s ease-in;
 }
 
-.return-form__btn:hover {
-  background: #ff9300;
-  background: linear-gradient(90deg, #ff9300 0%, #ff9300 100%);
-  border-color: #ff9300;
+#formularz-reklamacji .return-form__btn:hover {
+  background: #f37043;
+  color: #fff;
 }
 
-.return-form__btn--small {
+#formularz-reklamacji .return-form__btn--small {
   padding: 7px 9px;
   font-size: 12px;
   border: none;
+  color:#fff;
 }
 
-.return-form__btn--add {
+#formularz-reklamacji .return-form__btn--add {
   background: #4bb94b;
   margin-right: 10px;
 }
 
-.return-form__btn--add:hover {
+#formularz-reklamacji .return-form__btn--add:hover {
   background: #338333;
 }
 
-.return-form__btn--remove {
+#formularz-reklamacji .return-form__btn--remove {
   background: #ff4e4e;
 }
 
-.return-form__btn--remove:hover {
+#formularz-reklamacji .return-form__btn--remove:hover {
   background: #ff0000;
 }
 
-.return-form__btn--remove:disabled {
+#formularz-reklamacji .return-form__btn--remove:disabled {
   background: #efefef;
 }
 
-.return-form__buttons-wrapper {
+#formularz-reklamacji .return-form__buttons-wrapper {
   border: 1px solid transparent;
 }
 
-.return-form__buttons-wrapper-warning {
+#formularz-reklamacji .return-form__buttons-wrapper-warning {
   border-color: #ff4e09;
 }
 
-.return-form__footer {
+#formularz-reklamacji .return-form__footer {
+  margin-top: 10px;
   text-align: justify;
   font-size: 10px;
   line-height: 12px;
 }
 
-.return-form__footer-rodo {
+#formularz-reklamacji .return-form__footer-rodo {
   text-decoration: none;
   color: #ff4e09;
 }
 
 /* Spinner   */
 
-.return-spinner {
+#formularz-reklamacji .return-spinner {
   height: 800px;
   min-height: 100%;
   background-color: #fff;
@@ -252,14 +241,14 @@ input[type="number"] {
   align-items: center;
 }
 
-.return-spinner__wrapper {
+#formularz-reklamacji .return-spinner__wrapper {
   margin: 0px auto;
   width: 40px;
   height: 40px;
   position: relative;
 }
 
-.return-spinner__wrapper .return-spinner-circle {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -267,7 +256,7 @@ input[type="number"] {
   top: 0;
 }
 
-.return-spinner__wrapper .return-spinner-circle:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle:before {
   content: "";
   display: block;
   margin: 0 auto;
@@ -279,102 +268,80 @@ input[type="number"] {
     both;
   animation: return-spinner-circleFadeDelay 1.2s infinite ease-in-out both;
 }
-.return-spinner__wrapper .return-spinner-circle2 {
-  -webkit-transform: rotate(30deg);
-  -ms-transform: rotate(30deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle2 {
   transform: rotate(30deg);
 }
-.return-spinner__wrapper .return-spinner-circle3 {
-  -webkit-transform: rotate(60deg);
-  -ms-transform: rotate(60deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle3 {
   transform: rotate(60deg);
 }
-.return-spinner__wrapper .return-spinner-circle4 {
-  -webkit-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle4 {
   transform: rotate(90deg);
 }
-.return-spinner__wrapper .return-spinner-circle5 {
-  -webkit-transform: rotate(120deg);
-  -ms-transform: rotate(120deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle5 {
   transform: rotate(120deg);
 }
-.return-spinner__wrapper .return-spinner-circle6 {
-  -webkit-transform: rotate(150deg);
-  -ms-transform: rotate(150deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle6 {
   transform: rotate(150deg);
 }
-.return-spinner__wrapper .return-spinner-circle7 {
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle7 {
   transform: rotate(180deg);
 }
-.return-spinner__wrapper .return-spinner-circle8 {
-  -webkit-transform: rotate(210deg);
-  -ms-transform: rotate(210deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle8 {
   transform: rotate(210deg);
 }
-.return-spinner__wrapper .return-spinner-circle9 {
-  -webkit-transform: rotate(240deg);
-  -ms-transform: rotate(240deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle9 {
   transform: rotate(240deg);
 }
-.return-spinner__wrapper .return-spinner-circle10 {
-  -webkit-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle10 {
   transform: rotate(270deg);
 }
-.return-spinner__wrapper .return-spinner-circle11 {
-  -webkit-transform: rotate(300deg);
-  -ms-transform: rotate(300deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle11 {
   transform: rotate(300deg);
 }
-.return-spinner__wrapper .return-spinner-circle12 {
-  -webkit-transform: rotate(330deg);
-  -ms-transform: rotate(330deg);
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle12 {
   transform: rotate(330deg);
 }
-.return-spinner__wrapper .return-spinner-circle2:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle2:before {
   -webkit-animation-delay: -1.1s;
   animation-delay: -1.1s;
 }
-.return-spinner__wrapper .return-spinner-circle3:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle3:before {
   -webkit-animation-delay: -1s;
   animation-delay: -1s;
 }
-.return-spinner__wrapper .return-spinner-circle4:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle4:before {
   -webkit-animation-delay: -0.9s;
   animation-delay: -0.9s;
 }
-.return-spinner__wrapper .return-spinner-circle5:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle5:before {
   -webkit-animation-delay: -0.8s;
   animation-delay: -0.8s;
 }
-.return-spinner__wrapper .return-spinner-circle6:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle6:before {
   -webkit-animation-delay: -0.7s;
   animation-delay: -0.7s;
 }
-.return-spinner__wrapper .return-spinner-circle7:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle7:before {
   -webkit-animation-delay: -0.6s;
   animation-delay: -0.6s;
 }
-.return-spinner__wrapper .return-spinner-circle8:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle8:before {
   -webkit-animation-delay: -0.5s;
   animation-delay: -0.5s;
 }
-.return-spinner__wrapper .return-spinner-circle9:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle9:before {
   -webkit-animation-delay: -0.4s;
   animation-delay: -0.4s;
 }
-.return-spinner__wrapper .return-spinner-circle10:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle10:before {
   -webkit-animation-delay: -0.3s;
   animation-delay: -0.3s;
 }
-.return-spinner__wrapper .return-spinner-circle11:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle11:before {
   -webkit-animation-delay: -0.2s;
   animation-delay: -0.2s;
 }
-.return-spinner__wrapper .return-spinner-circle12:before {
+#formularz-reklamacji .return-spinner__wrapper .return-spinner-circle12:before {
   -webkit-animation-delay: -0.1s;
   animation-delay: -0.1s;
 }
@@ -402,39 +369,61 @@ input[type="number"] {
 }
 
 /* Wiadomość dla klienta po wysłaniu formularza  */
-.return-message {
+#formularz-reklamacji .return-message {
   padding: 30px 20px;
 }
 
-.return-message__container {
+#formularz-reklamacji .return-message__container {
   text-align: center;
 }
 
-.return-message__success {
+#formularz-reklamacji .return-message__success {
   color: green;
   font-size: 18px;
 }
 
-.return-message__id {
+#formularz-reklamacji .return-message__id {
   font-size: 25px;
   color: #ff4e09;
 }
 
-.return-message__id strong {
+#formularz-reklamacji .return-message__id strong {
   font-weight: 800;
 }
 
-.return-message__remember {
+#formularz-reklamacji .return-message__remember {
   margin-top: 30px;
   font-weight: 800;
   font-size: 12px;
 }
 
-.return-message__error {
+#formularz-reklamacji .return-message__error {
   color: #ff4e09;
   font-size: 25px;
 }
 
-.return-message__hide {
+#formularz-reklamacji .return-message__hide {
   display: none;
+}
+
+
+/* input type="number" hide arrow  */
+/* Chrome, Safari, Edge, Opera */
+#formularz-reklamacji input::-webkit-outer-spin-button,
+#formularz-reklamacji input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+#formularz-reklamacji input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Change the white to any color */
+#formularz-reklamacji input:-webkit-autofill,
+#formularz-reklamacji input:-webkit-autofill:hover, 
+#formularz-reklamacji input:-webkit-autofill:focus, 
+#formularz-reklamacji input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }

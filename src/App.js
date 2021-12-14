@@ -12,30 +12,56 @@ import Agreement from "./Components/Agreement";
 import FormFooter from "./Components/FormFooter";
 
 const App = () => {
+  // const [state, setState] = useState({
+  //   docNumber: "",
+  //   producer: "",
+  //   typeProduct: "",
+  //   quantity: 1,
+  //   typeOfReturn: "",
+  //   buyDate: "",
+  //   howFinish: "",
+  //   isProtocol: "",
+  //   requiresDisassembly: "",
+  //   description: "",
+  //   files: [],
+  //   name: "",
+  //   email: "",
+  //   phone: "",
+  //   street: "",
+  //   zipCode: "",
+  //   city: "",
+  //   deviceSamePlace: "",
+  //   street2: "",
+  //   zipCode2: "",
+  //   city2: "",
+  //   getBack: "",
+  //   agreement: "",
+  // });
+
   const [state, setState] = useState({
-    docNumber: "",
-    producer: "",
-    typeProduct: "",
+    docNumber: "zam/2/2021",
+    producer: "Blaupunkt",
+    typeProduct: "eeeeee",
     quantity: 1,
-    typeOfReturn: "",
-    buyDate: "",
-    howFinish: "",
+    typeOfReturn: "typeOfReturn",
+    buyDate: "2021-12-02",
+    howFinish: "Naprawa towaru",
     isProtocol: "",
-    requiresDisassembly: "",
-    description: "",
+    requiresDisassembly: "Tak",
+    description: "test",
     files: [],
-    name: "",
-    email: "",
-    phone: "",
-    street: "",
-    zipCode: "",
-    city: "",
-    deviceSamePlace: "",
+    name: "Tomasz Lewandowski",
+    email: "t.lewandowski@emultimax.pl",
+    phone: "48888555222",
+    street: "Budowlanych 17L",
+    zipCode: "22-341",
+    city: "Zamość",
+    deviceSamePlace: "Tak",
     street2: "",
     zipCode2: "",
     city2: "",
-    getBack: "",
-    agreement: "",
+    getBack: "2021-12-31",
+    agreement: true,
   });
 
   const [todayDate, setTodayDate] = useState(false);
@@ -282,7 +308,7 @@ const App = () => {
     setShowForm(false);
     setShowSpinner(true);
 
-    const url = "https://newaccount1632792215290.freshdesk.com/api/v2/tickets";
+    const url = `${process.env.REACT_APP_URL}`;
     const body = {
       subject: "Reklamacja (online)",
       description: `
@@ -354,13 +380,37 @@ const App = () => {
       phone: obj.phone,
       priority: 1,
       status: 2,
+      group_id: 12000006487,
+      type: "Chcę złożyć reklamację",
+      custom_fields: {
+        cf_imie_i_nazwisko_lub_nazwa_firmy: obj.name,
+        cf_numer_zamowienia_lub_faktury: obj.docNumber,
+        cf_adres_email243803: obj.email,
+        cf_tel_kontaktowy186449:obj.phone,
+        cf_producent935387:obj.producer,
+        cf_ilosc_sztuk773919: obj.quantity,
+        cf_nazwa_produktu381809: obj.typeProduct,
+        cf_opis_wady668036:obj.description,
+        cf_ulica622429: obj.street,
+        cf_kod_pocztowy656613: obj.zipCode,
+        cf_miejscowosc:obj.city,
+        cf_preferowana_data_odbioru722409: obj.getBack,
+        cf_data_zakupu483963:obj.buyDate,
+        cf_czy_sporzadzono_protokol_szkody: obj.isProtocol === "Tak" ? true : false,
+        cf_czy_produkt_wymaga_demontazu: obj.requiresDisassembly === "Tak" ? true : false,
+        cf_ulica_montazu_urzadzenia: obj.street2,
+        cf_kod_pocztowy_montazu_urzadzenia: obj.zipCode2,
+        cf_miejscowosc_montazu_urzadzenia:obj.city2,
+        cf_rodzaj_zgoszenia66882:obj.typeOfReturn,
+        cf_oczekiwany_sposb_zakonczenia_zgoszenia: obj.howFinish,
+      }
     };
 
     fetch(url, {
       method: "POST",
       headers: {
-        Authorization: "VHE3djNOUEFwUWFSNXhscG80Zg==",
-        "Content-Type": "application/json",
+        Authorization: `${process.env.REACT_APP_API_KEY}`,
+        "Content-Type": "application/json; charset=utf-8",
       },
       body: JSON.stringify(body),
     })
@@ -386,7 +436,7 @@ const App = () => {
     <div className="return">
       {showForm ? (
         <div id="return-form" className="return-form">
-          <h2 className="return-form__title">Formularz reklamacji (online)</h2>
+          <h2 className="return-form__subtitle"> Informacje o produkcie</h2>
           <Input
             value={state.docNumber}
             name={"docNumber"}
@@ -497,6 +547,7 @@ const App = () => {
             handleInput={handleInput}
             validation={badValidate.files}
           />
+          <h2 className="return-form__subtitle">Dane klienta</h2>
           <Input
             value={state.name}
             name={"name"}
